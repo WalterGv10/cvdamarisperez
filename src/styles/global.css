@@ -64,6 +64,20 @@
       transform: translateX(0);
     }
   }
+
+  @keyframes blurIn {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+      transform: scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1);
+    }
+  }
 }
 
 html {
@@ -89,9 +103,43 @@ html {
   transform: translateX(50px);
 }
 
+.reveal.reveal-blur {
+  filter: blur(10px);
+  transform: scale(0.95);
+}
+
 .reveal.active {
   opacity: 1;
   transform: translate(0) scale(1);
+  filter: blur(0);
+}
+
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
+}
+
+.delay-700 {
+  transition-delay: 700ms;
+}
+
+.delay-1000 {
+  transition-delay: 1000ms;
 }
 
 #scroll-progress {
