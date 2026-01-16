@@ -183,3 +183,35 @@ body.scrolling-up .animate-pulse-slow {
 .animate-pulse-slow {
   transition: all 1s ease-in-out;
 }
+
+/* Dynamic Translucent Backgrounds for Text */
+.text-backdrop {
+  position: relative;
+  z-index: 10;
+}
+
+.text-backdrop::before {
+  content: '';
+  position: absolute;
+  inset: -15px -25px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 100%);
+  opacity: 0;
+  filter: blur(20px);
+  z-index: -1;
+  border-radius: 50%;
+  transform: scale(0.8);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-backdrop.active::before {
+  opacity: 1;
+  transform: scale(1);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(226, 232, 240, 0.3) 100%);
+}
+
+.glass-accent {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
