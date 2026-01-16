@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
+import EducationSection from '../components/EducationSection.astro';
+import ReferencesSection from '../components/ReferencesSection.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FooterMinimalista from '../components/FooterMinimalista.astro';
+
+const pageTitle = "Damaris Pérez - Profesional en Administración y Compras";
+const pageDescription = "Perfil profesional de Damaris Aracely Pérez Gonzalez. Experta en gestión de compras y administración con enfoque en el sector financiero en Guatemala.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+	<main>
+		<HeroSection />
+		<ExperienceTimeline />
+		<SkillsGrid />
+		<EducationSection />
+		<ReferencesSection />
+		<ContactForm />
+	</main>
+	<FooterMinimalista />
+</Layout>

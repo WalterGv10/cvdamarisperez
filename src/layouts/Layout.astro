@@ -1,0 +1,50 @@
+---
+import '@fontsource/inter';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Perfil profesional de Damaris Aracely Pérez Gonzalez" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-GT" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-slate-50 text-slate-800 font-sans antialiased relative selection:bg-accent selection:text-white">
+    <div class="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100 via-slate-50 to-white opacity-60"></div>
+		<slot />
+    <script>
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.addEventListener('astro:page-load', () => {
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      });
+
+      // Initial run for static build (no ViewTransitions yet, but good practice)
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+	</body>
+</html>
