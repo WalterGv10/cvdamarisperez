@@ -13,19 +13,19 @@ const skills = [
 
 <section id="habilidades" class="py-24 bg-white relative overflow-hidden">
   <div class="absolute top-1/2 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-96 h-96 bg-warm/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple/5 rounded-full blur-3xl"></div>
   
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <h2 class="text-4xl font-bold text-slate-900 mb-16 text-center reveal">
-      Habilidades <span class="text-warm">Principales</span>
+      Habilidades <span class="text-vibrant">Principales</span>
     </h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
       {skills.map((skill, index) => (
         <div class={`p-8 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-vibrant/10 hover:-translate-y-2 transition-all duration-300 group reveal delay-${index * 50}`}>
-          <div class="h-2 w-16 bg-gradient-to-r from-vibrant via-accent to-warm mx-auto rounded-full mb-6 group-hover:scale-x-150 transition-transform duration-300"></div>
+          <div class="h-2 w-16 bg-gradient-to-r from-vibrant via-accent to-purple mx-auto rounded-full mb-6 group-hover:scale-x-150 transition-transform duration-300"></div>
           <h3 class="font-bold text-slate-800 mb-3 text-lg">{skill.name}</h3>
           <span class={`inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full ${
-            skill.level === 'Experto' ? 'bg-warm/10 text-warm' : 
+            skill.level === 'Experto' ? 'bg-purple/10 text-purple' : 
             skill.level === 'Avanzado' ? 'bg-vibrant/10 text-vibrant' : 'bg-accent/10 text-accent'
           }`}>
             {skill.level}
