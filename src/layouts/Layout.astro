@@ -46,7 +46,7 @@ const { title, description = "Perfil profesional de Damaris Aracely Pérez Gonza
       </svg>
     </button>
 
-    <div class="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100 via-slate-50 to-white opacity-60"></div>
+    <div id="main-bg" class="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100 via-slate-50 to-white opacity-60 transition-all duration-700 ease-linear"></div>
 		<slot />
 
     <script>
@@ -72,6 +72,7 @@ const { title, description = "Perfil profesional de Damaris Aracely Pérez Gonza
         
         const progressBar = document.getElementById('scroll-progress');
         const btt = document.getElementById('back-to-top');
+        const mainBg = document.getElementById('main-bg');
         let lastScrollTop = 0;
 
         window.addEventListener('scroll', () => {
@@ -81,6 +82,12 @@ const { title, description = "Perfil profesional de Damaris Aracely Pérez Gonza
           const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
           const scrolled = (st / height) * 100;
           if (progressBar) progressBar.style.width = scrolled + "%";
+
+          // Dynamic Background Hue Shift
+          if (mainBg) {
+             // Rotate hue based on scroll percentage (0 to 60deg approx)
+             mainBg.style.filter = `hue-rotate(${scrolled * 0.6}deg)`;
+          }
 
           // Back to Top Visibility & Scroll Direction
           if (st > 300) {
