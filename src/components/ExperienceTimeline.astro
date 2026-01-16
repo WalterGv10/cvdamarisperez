@@ -41,6 +41,9 @@ const experiences = [
     <div class="space-y-12">
       {experiences.map((exp, index) => (
         <div class={`relative pl-8 sm:pl-32 py-2 group reveal delay-${index * 100}`}>
+          <!-- Decoration background behind card -->
+          <div class="absolute inset-0 -z-10 bg-gradient-to-tr from-vibrant/5 to-purple/5 blur-3xl rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          
           <!-- Timeline Line -->
           <div class="absolute left-2 sm:left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-vibrant/20 via-vibrant/40 to-vibrant/5 group-last:bottom-auto group-last:h-full"></div>
           
