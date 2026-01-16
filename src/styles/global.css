@@ -160,8 +160,26 @@ html {
   top: 0;
   left: 0;
   height: 4px;
-  background: linear-gradient(to right, var(--color-primary), var(--color-vibrant), var(--color-warm));
+  background: linear-gradient(to right, var(--color-primary), var(--color-vibrant), var(--color-purple));
   z-index: 100;
   width: 0%;
   transition: width 0.1s ease-out;
+}
+
+/* Scroll-up specific parallax/effects */
+body.scrolling-up .animate-float {
+  transform: translateY(-20px) scale(1.05);
+  transition: transform 1s ease-out;
+}
+
+body.scrolling-up .animate-pulse-slow {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+  transition: all 1s ease-out;
+}
+
+/* Ensure smooth transition back */
+.animate-float,
+.animate-pulse-slow {
+  transition: all 1s ease-in-out;
 }

@@ -37,8 +37,18 @@ const { title, description = "Perfil profesional de Damaris Aracely Pérez Gonza
 	</head>
 	<body class="bg-slate-50 text-slate-800 font-sans antialiased relative selection:bg-accent selection:text-white">
     <div id="scroll-progress"></div>
+    
+    <!-- Floating Back to Top -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 z-50 p-4 bg-white/80 backdrop-blur-md rounded-full shadow-2xl border border-slate-100 text-primary translate-y-24 opacity-0 transition-all duration-500 hover:scale-110 active:scale-95 group overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-vibrant/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <svg class="w-6 h-6 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
+
     <div class="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100 via-slate-50 to-white opacity-60"></div>
 		<slot />
+
     <script>
       const observerOptions = {
         root: null,
@@ -50,9 +60,9 @@ const { title, description = "Perfil profesional de Damaris Aracely Pérez Gonza
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('active');
-            // We don't unobserve here if we want them to play every time, 
-            // but for portfolio usually once is enough to keep it clean.
-            observer.unobserve(entry.target);
+          } else {
+            // Optional: Remove active to animate again when scrolling back up
+            // entry.target.classList.remove('active');
           }
         });
       }, observerOptions);
@@ -61,11 +71,36 @@ const { title, description = "Perfil profesional de Damaris Aracely Pérez Gonza
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         
         const progressBar = document.getElementById('scroll-progress');
+        const btt = document.getElementById('back-to-top');
+        let lastScrollTop = 0;
+
         window.addEventListener('scroll', () => {
-          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const st = window.pageYOffset || document.documentElement.scrollTop;
+          
+          // Progress Bar
           const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          const scrolled = (winScroll / height) * 100;
+          const scrolled = (st / height) * 100;
           if (progressBar) progressBar.style.width = scrolled + "%";
+
+          // Back to Top Visibility & Scroll Direction
+          if (st > 300) {
+            btt?.classList.remove('translate-y-24', 'opacity-0');
+          } else {
+            btt?.classList.add('translate-y-24', 'opacity-0');
+          }
+
+          // Scroll Direction Detection for subtle parallax or element shifts
+          if (st < lastScrollTop) {
+            document.body.classList.add('scrolling-up');
+          } else {
+            document.body.classList.remove('scrolling-up');
+          }
+          
+          lastScrollTop = st <= 0 ? 0 : st;
+        });
+
+        btt?.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
 
