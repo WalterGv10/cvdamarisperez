@@ -4,33 +4,35 @@ const experiences = [
     puesto: "Asistente de Compras",
     empresa: "Grupo ITM",
     periodo: "2023 – Actualidad",
+    subtitulo: "Gestión Estratégica de Compras",
     descripcion: [
-      "Gestión y elaboración de órdenes de compra.",
-      "Negociación y seguimiento con proveedores (cotizaciones y entregas).",
-      "Control de costos por proyecto y cumplimiento de presupuestos.",
-      "Liderazgo en la cadena de suministro interna."
+      { area: "Optimización de Recursos", detalle: "Negociación y seguimiento activo con proveedores para asegurar las mejores condiciones en cotizaciones y tiempos de entrega." },
+      { area: "Control Financiero", detalle: "Monitoreo de costos por proyecto y cumplimiento riguroso de los presupuestos asignados por la gerencia." },
+      { area: "Ejecución Operativa", detalle: "Gestión integral del ciclo de compras, desde la solicitud hasta la elaboración y cierre de órdenes." }
     ]
   },
   {
-    puesto: "Recepción / RRHH",
+    puesto: "Recepción y Recursos Humanos",
     empresa: "Grupo ITM",
     periodo: "2016 – 2023",
+    subtitulo: "Fundamentos Administrativos y RRHH",
     descripcion: [
-      "Atención telefónica y presencial a clientes y proveedores.",
-      "Gestión de trámites administrativos (IRTRA, control de vacaciones y asistencia).",
-      "Gestión de relaciones con proveedores externos."
+      { area: "Servicio al Cliente", detalle: "Atención telefónica y presencial a clientes y proveedores. Actuación como primer punto de contacto y rostro de la empresa." },
+      { area: "Gestión Interna", detalle: "Manejo de control de vacaciones y asistencia del personal. Gestión eficiente de trámites administrativos institucionales (incluyendo IRTRA)." }
     ]
   },
   {
     puesto: "Auxiliar de Producción y Ensamblaje",
-    empresa: "Accesorios Globles S.A",
+    empresa: "Accesorios Globales S.A.",
     periodo: "Mar 2015 – Dic 2015",
+    subtitulo: "Inicios Profesionales",
     descripcion: [
-      "Producción de cinchos de cuero y control visual de calidad."
+      { area: "Producción y Calidad", detalle: "Enfoque en producción de cinchos de cuero y control visual de calidad. Desarrollo de atención al detalle y disciplina operativa." }
     ]
   }
 ];
 ---
+
 
 <section id="experiencia" class="py-24 relative overflow-hidden bg-indigo-50/30">
   <div class="absolute top-0 right-0 w-64 h-64 bg-vibrant/5 rounded-full blur-3xl"></div>
@@ -62,18 +64,21 @@ const experiences = [
               {exp.periodo}
             </div>
             <h3 class="text-2xl font-bold text-slate-900 mb-1">{exp.puesto}</h3>
-            <p class="text-lg text-primary font-medium mb-6 flex items-center">
+            <p class="text-lg text-primary font-medium mb-2 flex items-center">
               <svg class="w-5 h-5 mr-2 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
               {exp.empresa}
             </p>
-            <ul class="space-y-3">
+            {exp.subtitulo && (
+              <p class="text-sm text-vibrant font-semibold uppercase tracking-wider mb-6">{exp.subtitulo}</p>
+            )}
+            <div class="space-y-4">
               {exp.descripcion.map((item) => (
-                <li class="flex items-start text-slate-600 group-hover:text-slate-700 transition-colors">
-                  <span class="mr-3 mt-2 w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0 shadow-[0_0_8px_rgba(6,182,212,0.6)]"></span>
-                  <span class="leading-relaxed">{item}</span>
-                </li>
+                <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+                  <span class="font-bold text-slate-800 sm:w-40 flex-shrink-0">{item.area}</span>
+                  <span class="text-slate-600 leading-relaxed">{item.detalle}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       ))}

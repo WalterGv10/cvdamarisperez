@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.astro';
+import ProfileObjective from '../components/ProfileObjective.astro';
+import CareerTimeline from '../components/CareerTimeline.astro';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
 import SkillsGrid from '../components/SkillsGrid.astro';
 import EducationSection from '../components/EducationSection.astro';
@@ -15,6 +17,8 @@ const pageDescription = "Perfil profesional de Damaris Aracely Pérez Gonzalez. 
 <Layout title={pageTitle} description={pageDescription}>
 	<main>
 		<HeroSection />
+		<ProfileObjective />
+		<CareerTimeline />
 		<ExperienceTimeline />
 		<SkillsGrid />
 		<EducationSection />
@@ -23,3 +27,4 @@ const pageDescription = "Perfil profesional de Damaris Aracely Pérez Gonzalez. 
 	</main>
 	<FooterMinimalista />
 </Layout>
+

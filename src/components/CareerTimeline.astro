@@ -1,0 +1,74 @@
+---
+const milestones = [
+  {
+    year: "2015",
+    company: "Accesorios Globales S.A.",
+    role: "Inicio en Producción y Calidad",
+    current: false
+  },
+  {
+    year: "2016 – 2023",
+    company: "Grupo ITM",
+    role: "Ingreso como Recepción y RRHH",
+    current: false
+  },
+  {
+    year: "2023 – Actualidad",
+    company: "Grupo ITM",
+    role: "Ascenso a Asistente de Compras",
+    current: true
+  }
+];
+---
+
+<section id="trayectoria" class="py-20 bg-slate-50 relative overflow-hidden">
+  <div class="absolute top-1/2 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl -translate-y-1/2"></div>
+  
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <h2 class="text-4xl font-bold text-slate-900 mb-4 text-center reveal text-backdrop">
+      Trayectoria de <span class="text-vibrant">Crecimiento</span>
+    </h2>
+    
+    <p class="text-center mb-16 reveal delay-100">
+      <span class="inline-flex items-center gap-2 px-6 py-2 bg-vibrant/10 text-vibrant rounded-full font-bold text-lg">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+        7+ años de trayectoria continua y ascenso interno
+      </span>
+    </p>
+
+    <!-- Timeline -->
+    <div class="relative reveal delay-200">
+      <!-- Line -->
+      <div class="absolute top-8 left-0 right-0 h-1 bg-gradient-to-r from-primary via-vibrant to-purple rounded-full"></div>
+      
+      <div class="grid grid-cols-3 gap-4">
+        {milestones.map((milestone, index) => (
+          <div class="relative text-center">
+            <!-- Dot -->
+            <div class={`relative mx-auto w-16 h-16 rounded-full flex items-center justify-center z-10 ${
+              milestone.current 
+                ? 'bg-gradient-to-tr from-primary to-vibrant shadow-lg shadow-vibrant/30' 
+                : 'bg-white border-4 border-primary'
+            }`}>
+              <div class={`w-4 h-4 rounded-full ${milestone.current ? 'bg-white' : 'bg-primary'}`}></div>
+              {milestone.current && (
+                <span class="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                  <span class="animate-sonar absolute w-full h-full rounded-full bg-green-400"></span>
+                </span>
+              )}
+            </div>
+            
+            <!-- Year -->
+            <p class="mt-4 text-lg font-bold text-slate-900">{milestone.year}</p>
+            
+            <!-- Content -->
+            <div class="mt-3">
+              <p class="font-bold text-primary text-sm">{milestone.company}</p>
+              <p class="text-slate-600 text-sm mt-1">{milestone.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

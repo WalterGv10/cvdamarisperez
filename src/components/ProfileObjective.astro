@@ -1,0 +1,50 @@
+---
+const pillars = [
+  {
+    title: "Sector Financiero",
+    description: "Enfoque en precisión, control de costos y cumplimiento normativo.",
+    icon: `<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`
+  },
+  {
+    title: "Ética Profesional",
+    description: "Integridad absoluta en el manejo de recursos y negociaciones.",
+    icon: `<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`
+  },
+  {
+    title: "Eficiencia de Procesos",
+    description: "Orientación operativa para maximizar recursos y reducir tiempos.",
+    icon: `<svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`
+  }
+];
+---
+
+<section id="perfil" class="py-24 bg-white relative overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-80 h-80 bg-vibrant/5 rounded-full blur-3xl"></div>
+  
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <h2 class="text-4xl font-bold text-slate-900 mb-6 text-center reveal text-backdrop">
+      Perfil Profesional <span class="text-primary">y Objetivo</span>
+    </h2>
+    
+    <p class="text-xl text-slate-600 text-center max-w-3xl mx-auto mb-16 reveal delay-100 leading-relaxed">
+      Aspira a desarrollarse en <span class="font-semibold text-vibrant">instituciones financieras</span>, aportando experiencia administrativa, ética profesional y orientación al cumplimiento de procesos para generar valor a largo plazo.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {pillars.map((pillar, index) => (
+        <div class={`relative group reveal delay-${(index + 1) * 100}`}>
+          <!-- Aura effect -->
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-vibrant/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+          
+          <div class="bg-white border-t-4 border-primary p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 h-full">
+            <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300" set:html={pillar.icon}></div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">{pillar.title}</h3>
+            <p class="text-slate-600 leading-relaxed">{pillar.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
